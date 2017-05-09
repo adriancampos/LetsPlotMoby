@@ -9,6 +9,4 @@ def get_word_frequency_dist(phrase):
     tokenized_phrase = phrase.split(' ')
     normalized_phrase = [token.lower() for token in tokenized_phrase]
     unique_tokens = list(set(normalized_phrase))
-    word_frequency_dist = {word:normalized_phrase.count(word) for word in unique_tokens}
-
-    return word_frequency_dist
+    return {word:normalized_phrase.count(word) for word in unique_tokens}
