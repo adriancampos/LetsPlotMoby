@@ -29,7 +29,7 @@ def get_frequency_dist_characters(input_string):
 
 def get_frequency_dist_words_top10(input_string):
     """
-    Calculate frequency of top ten words occurring in
+    Calculate frequency of top ten words occurring in a phrase
     :param input_string: String containing words to be ranked and limited to 10
     :return: A dictionary of words with their values (length 10)
     """
