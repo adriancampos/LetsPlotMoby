@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-def graphFrequency(frequency_dict):
+def show_graph(frequency_dict):
     """
     Creates graph based on frequency of character/word
     parameter is a dictionary containing each letter or word and their respective frequency
@@ -8,7 +8,7 @@ def graphFrequency(frequency_dict):
     
     #gets a list of tuples containing the letters as the first value and frequency as the second
     #sorts the list to put them in alphabetical order
-    freqDictList = sorted(freqDict.items()) 
+    freqDictList = sorted(frequency_dict.items())
     
     #creates empty lists to later hold the values of the x value labels and the y values of the graph
     xTicks = []
