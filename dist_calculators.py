@@ -65,6 +65,11 @@ def get_frequency_dist_first_letters(input_string):
             if (text[i + 1] not in chararacterFrequency_FirstLetter.keys()) and (text[i + 1] not in punc_chars):
                 chararacterFrequency_FirstLetter[text[i + 1]] = 0
 
-            chararacterFrequency_FirstLetter[text[i + 1]] += 1
+            # Characters like '-' will throw a KeyError.
+            # We don't care about them, so let's sloppily ignore anything that gives us trouble.
+            try:
+                chararacterFrequency_FirstLetter[text[i + 1]] += 1
+            except KeyError:
+                pass
 
     return chararacterFrequency_FirstLetter
