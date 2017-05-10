@@ -8,17 +8,17 @@ FILE_MOBY_BIG = "assets\\moby.txt"
 def main():
     # Characters
     show_graph(dist_calculators.get_frequency_dist_characters(load_from_file(FILE_MOBY_SMALL)),
-        style='g^', linewidth=10, markersize=15)
+        style='r--', linewidth=10, markersize=15)  # TODO Style this a little better
 
     show_graph(dist_calculators.get_frequency_dist_characters(load_from_file(FILE_MOBY_BIG)),
-               )
+               title="Bigger File")
 
     # Top 10 Words
     show_graph(dist_calculators.get_frequency_dist_words_top10(load_from_file(FILE_MOBY_SMALL)),
         linewidth=1)
 
     show_graph(dist_calculators.get_frequency_dist_words_top10(load_from_file(FILE_MOBY_BIG)),
-               )
+               title="Josh, this one takes forever")
 
     # First Letters
     show_graph(dist_calculators.get_frequency_dist_first_letters(load_from_file(FILE_MOBY_BIG)),
@@ -33,7 +33,7 @@ def load_from_file(filename):
         return file.read()
 
 
-def show_graph(frequency_dict, style='b', **kwargs):
+def show_graph(frequency_dict, style='b', title="Figure 1", **kwargs):
     """
     Creates graph based on frequency of character/word
     :param frequency_dict: dictionary containing each letter or word and their respective frequency 
@@ -58,7 +58,9 @@ def show_graph(frequency_dict, style='b', **kwargs):
     xVals = range(len(xTicks)) 
 
     #labels the x values with their appropriate names
-    plt.xticks(xVals, xTicks) 
+    plt.xticks(xVals, xTicks)
+
+    plt.title(title)
     
     #plots the x and y values then displays the graph
     plt.plot(xVals, yVals, style, **kwargs)# style=style, linewidth=linewidth, markersize=markersize, alpha=alpha)
