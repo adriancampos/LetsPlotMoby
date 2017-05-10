@@ -14,7 +14,7 @@ def main():
                title="Character Distribution - Mobysmall", style='bo')
 
     show_graph(dist_calculators.get_frequency_dist_characters(moby_big),
-               title="Character Distribution - Mobysmall", style='bo', sort_mode=1)
+               title="Character Distribution - Moby", style='bo', sort_mode=1)
 
     # Top 10 Words
     show_graph(dist_calculators.get_frequency_dist_words_top10(moby_small),
