@@ -6,13 +6,26 @@ FILE_MOBY_BIG = "assets\\moby.txt"
 
 
 def main():
-    show_graph(dist_calculators.get_frequency_dist_characters(load_from_file(FILE_MOBY_SMALL)))
-    show_graph(dist_calculators.get_frequency_dist_words_top10(load_from_file(FILE_MOBY_SMALL)))
-    show_graph(dist_calculators.get_frequency_dist_first_letters(load_from_file(FILE_MOBY_SMALL)))
+    # Characters
+    show_graph(dist_calculators.get_frequency_dist_characters(load_from_file(FILE_MOBY_SMALL)),
+        style='g^', linewidth=10, markersize=15)
 
-    show_graph(dist_calculators.get_frequency_dist_characters(load_from_file(FILE_MOBY_BIG)))
-    show_graph(dist_calculators.get_frequency_dist_words_top10(load_from_file(FILE_MOBY_BIG)))
-    show_graph(dist_calculators.get_frequency_dist_first_letters(load_from_file(FILE_MOBY_BIG)))
+    show_graph(dist_calculators.get_frequency_dist_characters(load_from_file(FILE_MOBY_BIG)),
+               )
+
+    # Top 10 Words
+    show_graph(dist_calculators.get_frequency_dist_words_top10(load_from_file(FILE_MOBY_SMALL)),
+        linewidth=1)
+
+    show_graph(dist_calculators.get_frequency_dist_words_top10(load_from_file(FILE_MOBY_BIG)),
+               )
+
+    # First Letters
+    show_graph(dist_calculators.get_frequency_dist_first_letters(load_from_file(FILE_MOBY_BIG)),
+               )
+
+    show_graph(dist_calculators.get_frequency_dist_first_letters(load_from_file(FILE_MOBY_SMALL)),
+               )
 
 
 def load_from_file(filename):
@@ -20,12 +33,14 @@ def load_from_file(filename):
         return file.read()
 
 
-def show_graph(frequency_dict):
+def show_graph(frequency_dict, style='b', **kwargs):
     """
     Creates graph based on frequency of character/word
-    parameter is a dictionary containing each letter or word and their respective frequency
+    :param frequency_dict: dictionary containing each letter or word and their respective frequency 
+    :param style: style to pass to plt.plot()
+    :param kwargs: any more keyword args (linewidth, markersize, etc.) to pass to plt.plot()
+    :return: 
     """
-    
     #gets a list of tuples containing the letters as the first value and frequency as the second
     #sorts the list to put them in alphabetical order
     freqDictList = sorted(frequency_dict.items())
@@ -46,7 +61,7 @@ def show_graph(frequency_dict):
     plt.xticks(xVals, xTicks) 
     
     #plots the x and y values then displays the graph
-    plt.plot(xVals, yVals)
+    plt.plot(xVals, yVals, style, **kwargs)# style=style, linewidth=linewidth, markersize=markersize, alpha=alpha)
     plt.show()
 
 main()
