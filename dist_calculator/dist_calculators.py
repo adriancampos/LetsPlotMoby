@@ -1,3 +1,4 @@
+__author__ = "Adrian 'LucidCharts' Campos, Johnson Nguyen, Josh Hicken"
 from string import punctuation as punc_chars # this is a string of punctuation chars from python standard lib
 from collections import OrderedDict
 
