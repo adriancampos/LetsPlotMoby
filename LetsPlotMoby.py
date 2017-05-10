@@ -6,25 +6,28 @@ FILE_MOBY_BIG = "assets\\moby.txt"
 
 
 def main():
+    moby_small = load_from_file(FILE_MOBY_SMALL)
+    moby_big = load_from_file(FILE_MOBY_BIG)
+
     # Characters
-    show_graph(dist_calculators.get_frequency_dist_characters(load_from_file(FILE_MOBY_SMALL)),
+    show_graph(dist_calculators.get_frequency_dist_characters(moby_small),
                title="Character Distribution - Mobysmall", style='bo')
 
-    show_graph(dist_calculators.get_frequency_dist_characters(load_from_file(FILE_MOBY_BIG)),
+    show_graph(dist_calculators.get_frequency_dist_characters(moby_big),
                title="Character Distribution - Mobysmall", style='bo', sort_mode=1)
 
     # Top 10 Words
-    show_graph(dist_calculators.get_frequency_dist_words_top10(load_from_file(FILE_MOBY_SMALL)),
+    show_graph(dist_calculators.get_frequency_dist_words_top10(moby_small),
                sort_mode=1, style='y', linewidth=5, title="Word Distribution - Mobysmall")
 
-    show_graph(dist_calculators.get_frequency_dist_words_top10(load_from_file(FILE_MOBY_BIG)),
+    show_graph(dist_calculators.get_frequency_dist_words_top10(moby_big),
                sort_mode=1, style='y', linewidth=5, title="Word Distribution - Moby")
 
     # First Letters
-    show_graph(dist_calculators.get_frequency_dist_first_letters(load_from_file(FILE_MOBY_SMALL)),
+    show_graph(dist_calculators.get_frequency_dist_first_letters(moby_small),
                style="r--", title="First Letter Distribution - Mobysmall")
 
-    show_graph(dist_calculators.get_frequency_dist_first_letters(load_from_file(FILE_MOBY_BIG)),
+    show_graph(dist_calculators.get_frequency_dist_first_letters(moby_big),
                style="r--", title="First Letter Distribution - Moby")
 
 
