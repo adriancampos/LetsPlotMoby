@@ -1,4 +1,24 @@
 import matplotlib.pyplot as plt
+import dist_calculators
+
+FILE_MOBY_SMALL = "assets\\mobysmall.txt"
+FILE_MOBY_BIG = "assets\\moby.txt"
+
+
+def main():
+    show_graph(dist_calculators.get_frequency_dist_characters(load_from_file(FILE_MOBY_SMALL)))
+    show_graph(dist_calculators.get_frequency_dist_words_top10(load_from_file(FILE_MOBY_SMALL)))
+    show_graph(dist_calculators.get_frequency_dist_first_letters(load_from_file(FILE_MOBY_SMALL)))
+
+    show_graph(dist_calculators.get_frequency_dist_characters(load_from_file(FILE_MOBY_BIG)))
+    show_graph(dist_calculators.get_frequency_dist_words_top10(load_from_file(FILE_MOBY_BIG)))
+    show_graph(dist_calculators.get_frequency_dist_first_letters(load_from_file(FILE_MOBY_BIG)))
+
+
+def load_from_file(filename):
+    with open(filename) as file:
+        return file.read()
+
 
 def show_graph(frequency_dict):
     """
@@ -28,3 +48,5 @@ def show_graph(frequency_dict):
     #plots the x and y values then displays the graph
     plt.plot(xVals, yVals)
     plt.show()
+
+main()
